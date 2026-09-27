@@ -1,0 +1,66 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgba(224, 226, 227);
+    margin: 0;
+}
+
+header {
+    text-align: center;
+    padding: 40px;
+}
+
+nav {
+    text-align: center;
+    padding: 15px;
+}
+
+nav a {
+    text-decoration: none;
+    margin: 25px;
+    color: black;
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: dimgray;
+}
+
+section{
+    padding: 40px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: darkslategray;
+    color: ghostwhite;
+    margin-top: 60px;
+}
+
+    img {
+    width: 20%;
+    border-radius: 10%;
+}
+
+@media (max-width: 600px) {
+    header{
+        padding:10px
+    }
+    nav a {
+        display: block;
+        margin: 10px;
+    }
+
+    section {
+        padding: 0px;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    img {
+        width: 80%;
+    }
+}
