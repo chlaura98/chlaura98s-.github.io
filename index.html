@@ -1,39 +1,168 @@
 <!DOCTYPE html>
-<html lang"es">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Mi primera página</title>
-        <link rel="stylesheet" href="">
-        <link rel="stylesheet" href="./style.css">
-    </head>
-        <body>
-            <header>
-            <h1>Mi primera página web</h1>
-            <p>Bienvenido a mi sitio</p>
-        </header>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holy Fresa | Una tentación celestial</title>
+    <link rel="icon" href="logo.png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
 
-        <nav>
-            <a href="#sobre-mi">Sobre mí</a>
-            <a href="#proyectos">Mis Proyectos</a>
-            <a href="https://www.google.com">Google</a>
-        </nav>
+    <!-- ========== ENCABEZADO ========== -->
+    <header class="header" id="inicio">
+        <img src="logo.png" alt="Logotipo de Holy Fresa: una fresa con halo y las letras HF" class="logo">
+        <h1>Holy Fresa</h1>
+        <p class="subtitulo">Una tentación celestial</p>
+        <p class="descripcion">Fresas con crema hechas al momento. Pídelas y recógelas sin filas.</p>
+        <div class="botones">
+            <a class="btn btn-claro" href="#menu">Pedir ahora</a>
+            <a class="btn btn-borde" href="#ubicacion">Cómo llegar</a>
+        </div>
+    </header>
 
-        <section id="sobre-mi">
-            <h2>Sobre mí</h2>
-              <img src="ia.jpg" alt="Imagen alusiva a mi carrera">
-            <p>Soy una estudiante de programación web</p>
+    <!-- ========== NAVEGACIÓN ==========-->
+    <nav class="menu">
+        <a href="#menu">Menú</a>
+        <a href="#pedido">Mi pedido</a>
+        <a href="#puntos">Puntos</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#ubicacion">Ubicación</a>
+        <a href="#contacto">Contacto</a>
+    </nav>
+
+    <main>
+
+        <!-- ========== MENÚ ========== -->
+        <section id="menu" class="section">
+            <h2>Nuestro menú</h2>
+            <p class="intro">Elige tu sabor y tu tamaño, y agrégalo a tu pedido.</p>
+            <div class="productos">
+
+                <article class="producto">
+                    <img src="clasicas.jpg" alt="Fresas con crema clásica">
+                    <h3>Fresas con crema clásica</h3>
+                    <p>Fresas frescas con crema de receta especial.</p>
+                    <label for="tam-clasica">Tamaño</label>
+                    <select id="tam-clasica">
+                        <option value="60">Chico $60</option>
+                        <option value="80" selected>Mediano $80</option>
+                        <option value="100">Grande $100</option>
+                    </select>
+                    <button class="btn btn-oscuro" data-nombre="Clásica" data-select="tam-clasica">Agregar</button>
+                </article>
+
+                <article class="producto">
+                    <img src="light.jpg" alt="Fresas con crema light">
+                    <h3>Fresas con crema light</h3>
+                    <p>Menos calorías y grasas, el mismo antojo.</p>
+                    <label for="tam-light">Tamaño</label>
+                    <select id="tam-light">
+                        <option value="65">Chico $65</option>
+                        <option value="85" selected>Mediano $85</option>
+                        <option value="110">Grande $105</option>
+                    </select>
+                    <button class="btn btn-oscuro" data-nombre="Light" data-select="tam-light">Agregar</button>
+                </article>
+
+                <article class="producto">
+                    <img src="dubai.jpg" alt="Fresas con crema dubai">
+                    <h3>Chocolate Dubai</h3>
+                    <p>Sabor de temporada de otoño, edición limitada.</p>
+                    <label for="tam-choco">Tamaño</label>
+                    <select id="tam-choco">
+                        <option value="80">Chico $80</option>
+                        <option value="100" selected>Mediano $100</option>
+                        <option value="120">Grande $120</option>
+                    </select>
+                    <button class="btn btn-oscuro" data-nombre="Chocolate Dubai" data-select="tam-choco">Agregar</button>
+                </article>
+
+            </div>
         </section>
 
-        <section id="proyectos">
-            <h2>Proyectos</h2>
-            <img src="merle.jpg" alt="Mi mascota">
-            <p>Esta es mi mascota</p>
+        <!-- ========== MI PEDIDO (con JavaScript) =========-->
+        <section id="pedido" class="section">
+            <h2>Mi pedido</h2>
+            <div class="pedido-caja">
+                <ul id="lista-pedido">
+                    <li class="vacio">Aún no has agregado nada.</li>
+                </ul>
+
+                <label for="visitas">¿Cuántas visitas llevas en Holy Fresa?</label>
+                <input type="number" id="visitas" min="0" value="0">
+
+                <p class="total">Total: <span id="total">$0</span></p>
+                <p id="descuento-texto" class="nota"></p>
+
+                <div class="botones">
+                    <button class="btn btn-oscuro" id="confirmar">Confirmar pedido (Pick Up)</button>
+                    <button class="btn btn-borde-oscuro" id="vaciar">Vaciar</button>
+                </div>
+                <p id="mensaje" class="mensaje" role="status"></p>
+            </div>
         </section>
-        <footer>
-            <p>Mi página web</p>
-            <a href="#">Contacto</a>
-        </footer>
-        <script src="script.js"></script>
-    </body>
+
+        <!-- ========== PUNTOS ========== -->
+        <section id="puntos" class="section">
+            <h2>Programa de puntos</h2>
+            <div class="puntos-grid">
+                <div class="punto">
+                    <strong>5 visitas</strong>
+                    <p>10% de descuento en tu pedido.</p>
+                </div>
+                <div class="punto">
+                    <strong>10 visitas</strong>
+                    <p>Unas fresas chicas gratis.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== NOSOTROS ========== -->
+        <section id="nosotros" class="section">
+            <h2>Nosotros</h2>
+            <div class="nosotros-contenido">
+                <img src="fresa.jpg" alt="Logotipo Holy Fresa">
+                <div class="texto">
+                    <p>"Holy" significa sagrado o celestial. Así queremos que sepa cada fresa con crema que preparamos.</p>
+                    <p>Usamos empaque biodegradable y preparamos cada pedido al momento, para que lo recojas sin filas.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== UBICACIÓN ========== -->
+        <section id="ubicacion" class="section">
+            <h2>Visítanos</h2>
+            <div class="ubicacion-grid">
+            <img src="mapa.jpg" alt="Logotipo Holy Fresa">    
+                <div class="datos">
+                    <h3>Sucursal San Cayetano</h3>
+                    <p>Av. Ferrocarril Central, col. San Cayetano, Pachuca de Soto, Hgo.</p>
+                    <p>Horario: Martes a Sábado 4:00pm a 10:00pm </p>
+                    <p>Próximamente: más sucursales.</p>
+                    <div class="botones">
+                        <a class="btn btn-oscuro" target="_blank" rel="noopener"
+                           href="https://www.google.com/maps/search/?api=1&query=Av.+Ferrocarril+Central+San+Cayetano+Pachuca+de+Soto+Hidalgo">Cómo llegar</a>
+                        <a class="btn btn-borde-oscuro" href="#">DiDi Food</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== PIE DE PÁGINA ========== -->
+    <footer class="footer" id="contacto">
+        <p><strong>Holy Fresa</strong> | Una tentación celestial</p>
+        <p class="redes">
+            <a href="holyfresa.mx">Instagram</a>
+            <a href="holyfresa.mx">TikTok</a>
+            <a href="holy fresa hidalgo">Facebook</a>
+            <a href="7717939098">WhatsApp</a>
+        </p>
+        <p class="chico">Empaque 100% biodegradable</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
 </html>

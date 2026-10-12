@@ -1,66 +1,276 @@
-body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    background-color: rgba(224, 226, 227);
+/* ========== ELEMENTO CSS3 #1: VARIABLES  ========== */
+:root{
+    --burgundy: #550310;
+    --crema: #FBEAF0;
+    --rosa: #F4C0D1;
+    --rosa-fuerte: #ED93B1;
+    --blanco: #FFFFFF;
+    --texto: #3b0a14;
+}
+
+/* Selector universal */
+*{
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
 }
 
-header {
-    text-align: center;
-    padding: 40px;
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: var(--crema);
+    color: var(--texto);
+    line-height: 1.5;
 }
 
-nav {
-    text-align: center;
-    padding: 15px;
-}
+img{ max-width: 100%; }
 
-nav a {
+/* ========== BOTONES ========== */
+.btn{
+    display: inline-block;
+    padding: 12px 24px;
+    border-radius: 10px;              /* ELEMENTO CSS3 #2: border-radius */
+    font-weight: bold;
+    font-size: 16px;
     text-decoration: none;
-    margin: 25px;
-    color: black;
-    font-size: 18px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.3s, background-color 0.3s, color 0.3s;   /* ELEMENTO CSS3 #3: transition */
+}
+.btn:hover{
+    transform: translateY(-3px);      /* ELEMENTO CSS3 #4: transform */
+}
+.btn-claro{ background-color: var(--rosa); color: var(--burgundy); }
+.btn-claro:hover{ background-color: var(--blanco); }
+.btn-borde{ border-color: var(--rosa); color: var(--rosa); background: transparent; }
+.btn-borde:hover{ background-color: var(--rosa); color: var(--burgundy); }
+.btn-oscuro{ background-color: var(--burgundy); color: var(--crema); }
+.btn-oscuro:hover{ background-color: #7a0a1c; }
+.btn-borde-oscuro{ border-color: var(--burgundy); color: var(--burgundy); background: transparent; }
+.btn-borde-oscuro:hover{ background-color: var(--burgundy); color: var(--crema); }
+
+.botones{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
-nav a:hover {
-    color: dimgray;
-}
-
-section{
-    padding: 40px;
-}
-
-footer {
+/* ========== HEADER ========== */
+.header{
     text-align: center;
+    padding: 50px 20px;
+    color: var(--crema);
+    /* ELEMENTO CSS3 #5: degradado (linear-gradient) */
+    background: linear-gradient(135deg, var(--burgundy), #7a0a1c);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);   /* ELEMENTO CSS3 #6: box-shadow */
+}
+.header .botones{ justify-content: center; }
+
+.logo{
+    width: 180px;
+    border-radius: 16px;
+    margin-bottom: 10px;
+}
+
+.header h1{
+    font-size: 40px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.subtitulo{
+    font-size: 22px;
+    color: var(--rosa);
+    margin-bottom: 10px;
+}
+
+.descripcion{ max-width: 480px; margin: 0 auto; opacity: 0.95; }
+
+/* ========== NAV ========== */
+/* ELEMENTO CSS3 #7: Flexbox */
+nav{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 15px;
+    background-color: var(--rosa-fuerte);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+nav a{
+    text-decoration: none;
+    color: var(--burgundy);
+    font-weight: bold;
+    padding: 8px 14px;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+}
+nav a:hover{ background-color: var(--crema); }
+
+/* ========== SECCIONES ========== */
+.section{
+    padding: 50px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.section h2{
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--burgundy);
+    font-size: 28px;
+}
+.intro{ text-align: center; margin-bottom: 30px; }
+
+/* ========== MENÚ (productos) ========== */
+/* ELEMENTO CSS3 #8: CSS Grid */
+.productos{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+.producto{
+    background-color: var(--blanco);
     padding: 20px;
-    background-color: darkslategray;
-    color: ghostwhite;
-    margin-top: 60px;
+    border-radius: 16px;
+    border: 1px solid var(--rosa-fuerte);
+    box-shadow: 0 6px 18px rgba(85, 3, 16, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.3s;
+}
+.producto:hover{ transform: translateY(-6px); }
+.producto h3{ color: var(--burgundy); }
+.foto{
+    height: 150px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--rosa), var(--rosa-fuerte));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+}
+.producto img{ border-radius: 12px; height: 150px; width: 100%; object-fit: cover; }
+label{ font-weight: bold; font-size: 14px; }
+select, input[type="number"]{
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--rosa-fuerte);
+    font-size: 15px;
+    width: 100%;
+}
+.producto .btn{ margin-top: auto; }
+
+/* ========== MI PEDIDO ========== */
+.pedido-caja{
+    background-color: var(--blanco);
+    border-radius: 16px;
+    border: 1px solid var(--rosa-fuerte);
+    box-shadow: 0 6px 18px rgba(85, 3, 16, 0.15);
+    padding: 24px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+#lista-pedido{ list-style: none; margin-bottom: 20px; }
+#lista-pedido li{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--rosa);
+}
+#lista-pedido .vacio{ color: #8a5a66; justify-content: center; }
+.quitar{
+    background: none;
+    border: 1px solid var(--burgundy);
+    color: var(--burgundy);
+    border-radius: 6px;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+.quitar:hover{ background-color: var(--burgundy); color: var(--crema); }
+.total{ font-size: 22px; font-weight: bold; margin-top: 16px; color: var(--burgundy); }
+.nota{ font-size: 14px; color: #8a5a66; min-height: 20px; }
+.mensaje{ margin-top: 14px; font-weight: bold; color: var(--burgundy); }
+
+/* ========== PUNTOS ========== */
+.puntos-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+.punto{
+    background-color: var(--burgundy);
+    color: var(--crema);
+    text-align: center;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.punto strong{ font-size: 26px; color: var(--rosa); }
+
+/* ========== NOSOTROS ========== */
+.nosotros-contenido{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+.nosotros-contenido img{
+    width: 200px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+.texto{ max-width: 460px; }
+.texto p{ margin-bottom: 12px; }
+
+/* ========== UBICACIÓN ========== */
+.ubicacion-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 20px;
+}
+.mapa{
+    min-height: 240px;
+    border-radius: 16px;
+    background-color: var(--rosa);
+    border: 2px dashed #993556;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #72243E;
+}
+.datos h3{ color: var(--burgundy); margin-bottom: 8px; }
+.datos p{ margin-bottom: 6px; }
+
+/* ========== FOOTER ========== */
+footer{
+    text-align: center;
+    padding: 30px 20px;
+    background-color: var(--burgundy);
+    color: var(--crema);
+    margin-top: 40px;
+}
+.redes{ margin: 10px 0; }
+.redes a{ color: var(--rosa); margin: 0 10px; text-decoration: none; }
+.redes a:hover{ text-decoration: underline; }
+.chico{ font-size: 13px; opacity: 0.8; }
+
+/* ========== ELEMENTO CSS3 #9: (diseño responsivo) ========== */
+@media (max-width: 768px){
+    .ubicacion-grid{ grid-template-columns: 1fr; }
+    .nosotros-contenido{ flex-direction: column; text-align: center; }
 }
 
-    img {
-    width: 20%;
-    border-radius: 10%;
-}
-
-@media (max-width: 600px) {
-    header{
-        padding:10px
-    }
-    nav a {
-        display: block;
-        margin: 10px;
-    }
-
-    section {
-        padding: 0px;
-        text-align: center;
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-
-    img {
-        width: 80%;
-    }
+@media (max-width: 600px){
+    .header{ padding: 30px 16px; }
+    .header h1{ font-size: 32px; }
+    nav{ flex-direction: column; align-items: center; gap: 6px; }
+    .section{ padding: 30px 16px; }
+    .botones{ flex-direction: column; }
+    .btn{ width: 100%; text-align: center; }
 }
